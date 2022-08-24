@@ -1,0 +1,57 @@
+{
+  "aggs": {
+    "two": {
+      "composite": {
+        "size": 1000,
+        "sources": [
+          {
+            "comp": {
+              "terms": {
+                "field": "some.field"
+              }
+            }
+          }
+        ]
+      },
+      "aggs": {
+        "four": {
+          "avg": {
+            "field": "some.avg.value"
+          }
+        }
+      }
+    }
+  },
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [],
+      "filter": [
+        {
+          "match_all": {}
+        },
+        {
+          "match_phrase": {
+            "some.keyword": "value"
+          }
+        },
+        {
+          "match_phrase": {
+            "tld.keyword": "it"
+          }
+        },
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "2021-08-19T10:26:35.897Z",
+              "lte": "2022-08-19T10:26:35.897Z",
+              "format": "strict_date_optional_time"
+            }
+          }
+        }
+      ],
+      "should": [],
+      "must_not": []
+    }
+  }
+}
