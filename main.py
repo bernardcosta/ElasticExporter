@@ -77,8 +77,11 @@ def merge_google_data(google_dir: str, elastic_dir: str):
     :return:
     """
     google = pd.read_csv(google_dir)
-    kibana = pd.read_csv(elastic_dir)
-    merged = kibana.merge(google, left_on='url', right_on='Landing Page')
+    logging.info(f'google LPs: {len(google)}')
+    elastic = pd.read_csv(elastic_dir)
+    logging.info(f'elastic LPsL {len(elastic)}')
+    merged = elastic.merge(google, left_on='url', right_on='Landing Page')
+    logging.info(f'Rows After inner merge: {len(merged)}')
     merged.to_csv(f'./SEO-bucket-prices-{datetime.now().strftime("%Y%m%d-%H%M%S")}.csv')
 
 
