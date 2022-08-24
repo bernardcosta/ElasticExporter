@@ -1,0 +1,8 @@
+certifi==2022.6.15
+elastic-transport==8.1.2
+elasticsearch==7.16.0
+fire==0.4.0
+python-dotenv==0.20.0
+six==1.16.0
+termcolor==1.1.0
+urllib3==1.26.12
