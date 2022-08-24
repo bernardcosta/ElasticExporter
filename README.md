@@ -1,1 +1,1 @@
-# elastiExporter
+# elasticExporter
